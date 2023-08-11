@@ -11,14 +11,14 @@ type Product struct {
 }
 
 func NewProduct(name string, price float64) (*Product, error) {
-	if isNoValidName(name) {
+	if len(name) == 0 {
 		return nil, errors.New("Enter the product name!")
 	}
 	return &Product{name, price}, nil
 }
 
 func isNoValidName(value string) bool {
-	compileNameRegexp := regexp.MustCompile(`^[a-zA-Zãâàáêèéìíîôóòùûú\s]+$`)
+	compileNameRegexp := regexp.MustCompile(`^[a-zA-Zãâàáêèéìíîôóòùûú\s]+[0-9]*$`)
 	isValid := compileNameRegexp.MatchString(value)
 	return !isValid
 }
