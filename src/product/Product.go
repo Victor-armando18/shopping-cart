@@ -10,7 +10,7 @@ type Product struct {
 	price float64
 }
 
-func New(name string, price float64) (*Product, error) {
+func NewProduct(name string, price float64) (*Product, error) {
 	if isNoValidName(name) {
 		return nil, errors.New("Enter the product name!")
 	}
